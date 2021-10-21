@@ -28,10 +28,10 @@ let timerId = 0;
 //Inicializo a variável que vai armazenar a contagem das teclas pressionadas
 let teclasPressionadas = 0;
 
-//Inicializo a variável que vai armazenar as palavras digitadas corretamente
+//Inicializo a variável que vai armazenar a contagem das palavras digitadas corretamente
 let palavrasCorretas = 0;
 
-//Inicializo a variável que vai armazenar as palavras digitadas erradas
+//Inicializo a variável que vai armazenar a contagem das palavras digitadas erradas
 let palavrasErradas = 0;
 
 //Inicializo com 60 (segundos) a variável que contém o tempo para o usuário digitar, que será usada no timer
@@ -60,30 +60,30 @@ function criaLinhas(){
 		/** Para cada vez que entra no laço, eu crio uma div e armazeno na variável linha*/
 		let linha = document.createElement("div");
 
-		// Adiciona a classe css linha na div criada
+		// Adiciona a classe css "linha" na div criada
 		linha.classList.add("linha");
 
 		//Seto o atributo id da div linha com o valor de i
 		linha.setAttribute("id", i);
 
 		/** Para cada linha criada, eu percorro seus elementos (as 10 palavras) usando o forEach
-		 * A função retorna a palavra armazenada em cada posição do array (p) e o índice (index) 
+		 * A função retorna a palavra armazenada em cada posição do array (p) e o índice da palavra(index) 
 		 */
 		arrayDeLinhas[i].forEach(function (p, index) {
 			// Para cada palavra, crio um span e armazeno na variável palavra
 			let palavra = document.createElement("span");
 
-			// Adiciono no spam o texto da palavra atual (p)
+			// Adiciono no span o texto da palavra (p) atual
 			palavra.textContent = p;
 
-			//Adiciono a classe css palavra ao span
+			//Adiciono a classe css "palavra" ao span
 			palavra.setAttribute("class", "palavra");
 
 			/* Seto o atributo idPalavra de cada span com o valor "linha(i)(index)"
-				sendo o primeiro algarismo a linha e o segundo algarismo o índice da palavra.
-				Ex: <span idPalavra='linha00'>Palavra 1 </span>
-					<span idPalavra='linha01'>Palavra 2 </span>
-					<span idPalavra='linha150'>Palavra 1 </span>
+				sendo o primeiro número o índice da linha e o segundo número o índice da palavra.
+				Ex: <span idPalavra='linha00'>Palavra 1 </span> Será a primeira palavra da primeira linha
+					<span idPalavra='linha01'>Palavra 2 </span> Será a segunda palavra da segunda linha (arrays começam em 0)
+					<span idPalavra='linha150'>Palavra 1 </span> Será a primeira palavra da linha 15
 			*/
 			palavra.setAttribute("idPalavra", `linha${i}${index}`);
 
