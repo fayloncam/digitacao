@@ -6,14 +6,14 @@ var palLid = cxPalLid.innerText
 cxTagDig.addEventListener('keydown', function (e) {
         palDig += e.key
         var codTecla = e.code
-        console.log(`${codTecla}`)
+        //console.log(`${codTecla}`)
         if (codTecla == 'Space') {
             compPalavra()
-            console.log(`${palDig}`)
-            console.log(`${palLid}`)
+            //console.log(`${palDig}`)
+            //console.log(`${palLid}`)
         }
     })
 
 function compPalavra(){
-    palDig == `${palLer.innerText} ` ? cxPalLid.style.color = 'green' : cxPalLid.style.color = 'red'
+    palDig == `${cxPalLid.innerText} ` ? cxPalLid.style.color = 'green' : cxPalLid.style.color = 'red'
 }
