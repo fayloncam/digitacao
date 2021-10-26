@@ -79,6 +79,7 @@ main > div .leitura {
     background-color: white;
     box-shadow: 1px 1px 3px #00000050;
     margin: auto;
+    font: normal 1.5em Arial;
 }
 
 main > div .digitacao {
@@ -91,6 +92,12 @@ main > div .digitacao {
     margin: auto;
     text-align: center;
     font-size: 2em;
+    
+
+}
+
+main > div .digitacao:focus {
+    outline: 2px solid #0b132b9a;
 }
 
 main section {
