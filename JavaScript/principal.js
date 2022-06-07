@@ -51,3 +51,11 @@ function troca_palavra () {
     var coloca_palavra = document.getElementById('palLer')
     coloca_palavra.innerText = "trocado"
 }
+
+function colocaPalavras (){
+    var selecionaLeitura = document.querySelector('#leitura') // Cria variavel que recebe o elemento pai
+    var colocaSpan = document.createElement('span') // Cria variavel que recebe i tipo de tag a ser criada
+    colocaSpan.innerText = 'teste' // Configura o texto (aqui a palavra) da tag que será criada
+    colocaSpan.id = 'palLer4' // Configura o id da tag que será criada
+    selecionaLeitura.appendChild(colocaSpan) // Cria de fato a tag levando em conta o pai (definido na variável) e adiciona
+}
