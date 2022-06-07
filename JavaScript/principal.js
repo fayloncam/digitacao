@@ -18,7 +18,7 @@ cxTagDig.addEventListener('keypress', function(f) {
 */
 
 
-cxTagDig.addEventListener('keyup', function (e) {
+addEventListener('keyup', function (e) {
         //palDig += e.key
         var codTecla = e.code
         
@@ -31,7 +31,7 @@ cxTagDig.addEventListener('keyup', function (e) {
         } else if (codTecla == 'Backspace') {
             bsCounter ++
             console.log(`${bsCounter}`)
-        }
+        } 
     })
 
 function compPalavra(){
@@ -45,4 +45,9 @@ function compPalavra(){
     cxPalLid = document.getElementById(proTag)
     //console.log(`${proTag}`)
     //console.log(`${proTagNum}`)
+}
+
+function troca_palavra () {
+    var coloca_palavra = document.getElementById('palLer')
+    coloca_palavra.innerText = "trocado"
 }
