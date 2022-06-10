@@ -125,6 +125,7 @@ main section article h3 {
 }
 
 footer {
+    grid-area: footer;
     background-color: var(--cor3);
     margin-bottom: 0px;
     height: 50px;
