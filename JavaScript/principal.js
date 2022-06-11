@@ -52,15 +52,19 @@ function troca_palavra () {
     var coloca_palavra = document.getElementById('palLer')
     coloca_palavra.innerText = "trocado"
 }
-
+ var numTagInicio = 4
 function colocaPalavras (){
+    
     var portugues = ['coisa','casa','tempo','dia','ano','vez','homem','senhor','moça', 'bom', 'grande','melhor','pior','certo','último','próprio','ser','ir','estar','ter','haver','fazer','dar','ficar','poder','ver','não','mais','muito','já','quando','mesmo','depois','ainda','um','dois','primeiro','cem','mil','a','o','um','uma','de','em','para','por','com','até','e','mas','ou','também','se','assim','como','porque','que','eu','você','ele','este','esse','isso','sua']
     var tamanho = portugues.length
     tamanho++
     var randomiza = (tam) => Math.floor (Math.random() * tam)
-    var selecionaLeitura = document.querySelector('#leitura') // Cria variavel que recebe o elemento pai
+    var selecionaLeitura = document.querySelector('.leitura') // Cria variavel que recebe o elemento pai
+    
     const colocaSpan = document.createElement('span')// Cria variavel que recebe o tipo de tag a ser criada, na verdade cria o elemento
     colocaSpan.innerText = `${portugues[randomiza(tamanho)]}` // Configura o texto (aqui a palavra) da tag que será criada
-    colocaSpan.id = `palLer${proTagNum}` // Configura o id da tag que será criada
-    selecionaLeitura.appendChild(colocaSpan) // Cria de fato a tag levando em conta o pai (definido na variável) e adiciona-a
+    colocaSpan.id = `palLer${numTagInicio}` // Configura o id da tag que será criada
+    selecionaLeitura.insertAdjacentElement('beforeend',colocaSpan) // Cria de fato a tag levando em conta o pai (definido na variável) e adiciona-a
+    selecionaLeitura.insertAdjacentText('beforeend',' ')
+    numTagInicio++
 }
