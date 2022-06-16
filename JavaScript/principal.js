@@ -6,7 +6,7 @@
 
     var selecionaLeitura = document.querySelector('.leitura') // Cria variavel que recebe o elemento pai
     var numTagInicio = 0
-    while (numTagInicio <= 200) {
+    while (numTagInicio <= 10) {
     let colocaSpan = document.createElement('span')// Cria variavel que recebe o tipo de tag a ser criada, na verdade cria o elemento
     colocaSpan.innerText = `${portugues[randomiza(tamanho)]}` // Configura o texto (aqui a palavra) da tag que será criada
     colocaSpan.id = `palLer${numTagInicio}` // Configura o id da tag que será criada
@@ -35,39 +35,24 @@ cxTagDig.addEventListener('keypress', function(f) {
 
 */
 
+cxTagDig.focus()
+cxTagDig.addEventListener('keyup',
 
-addEventListener('keyup', function (e) {
-        //palDig += e.key
-        var codTecla = e.code
+    function (e) {
         
-        console.log(`${codTecla}`)
-        if (codTecla == 'Space') {
-            palDig = cxTagDig.value
-            compPalavra()
-            //console.log(`${cxTagDig.innerText}`)
-            //console.log(`${palLid}`)
-        } else if (codTecla == 'Backspace') {
+        if (e.code == 'Space') {
+            
+                palDig = cxTagDig.value
+                palDig == `${cxPalLid.innerHTML} ` ? cxPalLid.style.color = 'green' : cxPalLid.style.color = 'red'
+                proTagNum ++
+                proTag = `palLer${proTagNum}`
+                cxPalLid = document.getElementById(proTag)
+                palDig = ''
+                cxTagDig.value = ''
+            
+        } else if (e.code == 'Backspace') {
             bsCounter ++
-            console.log(`${bsCounter}`)
         } 
-    })
-
-
-function compPalavra(){
-    
-    //console.log(`${palDig}`)
-    palDig == `${cxPalLid.innerText} ` ? cxPalLid.style.color = 'green' : cxPalLid.style.color = 'red'
-    palDig = ''
-    cxTagDig.value = ''
-    proTagNum ++
-    var proTag = `palLer${proTagNum}`
-    cxPalLid = document.getElementById(proTag)
-    //console.log(`${proTag}`)
-    //console.log(`${proTagNum}`)
-}
-
-/*function troca_palavra () {
-    var coloca_palavra = document.getElementById('palLer')
-    coloca_palavra.innerText = "trocado"
-}*/
+    }
+)
  
