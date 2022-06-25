@@ -7,16 +7,17 @@
     <title>Teste de digitação</title>
     <link rel="stylesheet" href="estilo/style.css">
 </head>
-<body>
+<body onload="colocaPalavra()">
     <div>
         <header>
             <h1>Aumente sua velocidade de digitação</h1>
         </header>
         <main class="principal">
             <div class='leitura' id='leitura'>
-                <p></p>              
+                          
             </div>
             <input type='text' class='digitacao' id='digitacao'>
+            <input type="button" value="Atualizar" id="atualizar" onclick="atualizar()">
         </main>
         <footer>
             <h2>fayloncam</h2>
