@@ -18,10 +18,13 @@ cxTagDig.addEventListener('keyup',
         if (e.code === 'Space') {
             if(cxPalLid != null){
             palDig = cxTagDig.value
-            palDig == `${cxPalLid.innerText} ` ? cxPalLid.style.color = 'green' : cxPalLid.style.color = 'red'
+            palDig == `${cxPalLid.innerText} ` ? cxPalLid.classList.add('correto') : cxPalLid.classList.add('incorreto')
             proTagNum ++
             proTag = `palLer${proTagNum}`
+            cxPalLid.classList.remove('ativo')
             cxPalLid = document.getElementById(proTag)
+            if (cxPalLid != null) {
+                cxPalLid.classList.add('ativo')}
             palDig = ''
             cxTagDig.value = '' 
             } else {
