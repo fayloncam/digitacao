@@ -3,11 +3,16 @@ let tamanho = portugues.length
 let randomiza = (tam) => Math.floor (Math.random() * tam)
 const selecionaLeitura = document.querySelector('.leitura') // Cria variavel que recebe o elemento pai
 let numTagInicio = 0
-let  cxPalLid
+let cxPalLid
 let palDig = ''
 let proTagNum =''
 let bsCounter = Number('0')
 let cxTagDig = document.getElementById('digitacao')
+let txtDig
+let txtLid
+let carDig
+let carLid
+let indice = 0
 
 document.addEventListener("keydown", () => cxTagDig.focus())
 
@@ -33,7 +38,19 @@ cxTagDig.addEventListener('keyup',
             }
         } else if (e.code === 'Backspace') {
             bsCounter ++
-        } 
+        }
+       
+       //------------------------
+        txtDig = document.querySelector('.digitacao')
+        carDig = txtDig.value.split('')[indice]
+        carLid = cxPalLid.innerText.split('')[indice]
+        if (carDig !== carLid) {
+            cxPalLid.classList.add('incorreto')
+            indice++
+        }
+        //-----------------------
+
+
     }
 )
 
