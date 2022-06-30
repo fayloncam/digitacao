@@ -32,22 +32,29 @@ cxTagDig.addEventListener('keyup',
                 cxPalLid.classList.add('ativo')}
             palDig = ''
             cxTagDig.value = '' 
+            indice = 0
             } else {
                 window.alert('Acabaram as palavras')
                 cxTagDig.value = ''    
             }
         } else if (e.code === 'Backspace') {
             bsCounter ++
-        }
+            indice--
+            cxPalLid.classList.remove('incorreto')
+            cxPalLid.classList.add('ativo')
+        } else {
+                txtDig = document.querySelector('.digitacao')
+                carDig = txtDig.value.split('')[indice]
+                carLid = cxPalLid.innerText.split('')[indice]
+                if (carDig != carLid) {
+                    cxPalLid.classList.add('incorreto')
+                }
+                indice++ 
+            }
+        
        
        //------------------------
-        txtDig = document.querySelector('.digitacao')
-        carDig = txtDig.value.split('')[indice]
-        carLid = cxPalLid.innerText.split('')[indice]
-        if (carDig !== carLid) {
-            cxPalLid.classList.add('incorreto')
-            indice++
-        }
+        
         //-----------------------
 
 
@@ -64,6 +71,7 @@ function colocaPalavra(){
         numTagInicio++
     }
     cxPalLid = document.getElementById('palLer0')
+    cxPalLid.classList.add('ativo')
     proTagNum = ''
 }
 
@@ -72,6 +80,8 @@ function atualizar() {
     while (selecionaLeitura.firstChild){
         selecionaLeitura.removeChild(selecionaLeitura.firstChild)
     }
+    cxTagDig.value = ''
+    indice = 0
     colocaPalavra()
 }
 
