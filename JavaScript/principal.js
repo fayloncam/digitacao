@@ -13,13 +13,14 @@ let txtLid
 let carDig
 let carLid
 let indice = 0
+const acentuacao = ['´', '`', '~', '^']
 
 document.addEventListener("keydown", () => cxTagDig.focus())
 
 cxTagDig.addEventListener('keyup',
 
     function (e) {
-        
+        console.log (`Pressionado: ${e.code}`)
         if (e.code === 'Space') {
             if(cxPalLid != null){
             palDig = cxTagDig.value
@@ -42,7 +43,7 @@ cxTagDig.addEventListener('keyup',
             indice--
             cxPalLid.classList.remove('incorreto')
             cxPalLid.classList.add('ativo')
-        } else {
+        } else if (!acentuacao.includes(e.code)) { 
                 txtDig = document.querySelector('.digitacao')
                 carDig = txtDig.value.split('')[indice]
                 carLid = cxPalLid.innerText.split('')[indice]
