@@ -13,14 +13,11 @@ let txtLid
 let carDig
 let carLid
 let indice = 0
-const acentuacao = ['´', '`', '~', '^']
 
 document.addEventListener("keydown", () => cxTagDig.focus())
 
 cxTagDig.addEventListener('keyup',
-
     function (e) {
-        console.log (`Pressionado: ${e.code}`)
         if (e.code === 'Space') {
             if(cxPalLid != null){
             palDig = cxTagDig.value
@@ -43,7 +40,7 @@ cxTagDig.addEventListener('keyup',
             indice--
             cxPalLid.classList.remove('incorreto')
             cxPalLid.classList.add('ativo')
-        } else if (!acentuacao.includes(e.code)) { 
+        } else if (e.key != 'Dead' && e.key != 'Shift') { 
                 txtDig = document.querySelector('.digitacao')
                 carDig = txtDig.value.split('')[indice]
                 carLid = cxPalLid.innerText.split('')[indice]
@@ -63,7 +60,7 @@ cxTagDig.addEventListener('keyup',
 )
 
 function colocaPalavra(){
-    while (numTagInicio <= 10) {
+    while (numTagInicio <= 20) {
         let colocaSpan = document.createElement('span')// Cria variavel que recebe o tipo de tag a ser criada, na verdade cria o elemento
         colocaSpan.innerText = `${portugues[randomiza(tamanho)]}` // Configura o texto (aqui a palavra) da tag que será criada
         colocaSpan.id = `palLer${numTagInicio}` // Configura o id da tag que será criada
