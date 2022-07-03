@@ -26,7 +26,7 @@ cxTagDig.addEventListener('keyup',
             proTag = `palLer${proTagNum}`
             cxPalLid.classList.remove('ativo')
             cxPalLid = document.getElementById(proTag)
-            cxPalLid.scrollIntoView({behavior: "smooth"})
+            cxPalLid.scrollIntoView({behavior: "smooth", block:"center"})
             if (cxPalLid != null) {
                 cxPalLid.classList.add('ativo')}
             palDig = ''
@@ -64,7 +64,7 @@ function colocaPalavra(){
     }
     cxPalLid = document.getElementById('palLer0')
     cxPalLid.classList.add('ativo')
-    cxPalLid.scrollIntoView()
+    cxPalLid.scrollIntoView(false)
     proTagNum = ''
 }
 
