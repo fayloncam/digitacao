@@ -26,6 +26,7 @@ cxTagDig.addEventListener('keyup',
             proTag = `palLer${proTagNum}`
             cxPalLid.classList.remove('ativo')
             cxPalLid = document.getElementById(proTag)
+            cxPalLid.scrollIntoView({behavior: "smooth"})
             if (cxPalLid != null) {
                 cxPalLid.classList.add('ativo')}
             palDig = ''
@@ -53,7 +54,7 @@ cxTagDig.addEventListener('keyup',
 )
 
 function colocaPalavra(){
-    while (numTagInicio <= 20) {
+    while (numTagInicio <= 200) {
         let colocaSpan = document.createElement('span')// Cria variavel que recebe o tipo de tag a ser criada, na verdade cria o elemento
         colocaSpan.innerText = `${portugues[randomiza(tamanho)]}` // Configura o texto (aqui a palavra) da tag que será criada
         colocaSpan.id = `palLer${numTagInicio}` // Configura o id da tag que será criada
@@ -63,6 +64,7 @@ function colocaPalavra(){
     }
     cxPalLid = document.getElementById('palLer0')
     cxPalLid.classList.add('ativo')
+    cxPalLid.scrollIntoView()
     proTagNum = ''
 }
 

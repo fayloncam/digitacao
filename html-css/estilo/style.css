@@ -40,17 +40,24 @@ main{
 
 main div {
     background-color: white;
-    max-height: 150px;
+    max-height: 80px;
     width: 80%;
     border-radius: 10px;
     font-size: 2em;
-    padding: 5px;
+    padding: 10px;
     margin: auto;
     display: block;
+    text-align: justify;
+    letter-spacing: 0.03em;
+    overflow-y: hidden;
+    font-family: Courier;
+    margin-top: 10px;
 }
 
 main div span {
-    padding: 2.5px;
+    padding: 5px;
+    margin-top: 10px;
+    
 }
 
 main div span.ativo {
@@ -75,6 +82,10 @@ main input {
     margin: auto;
     margin-top: 15px;
     padding: 3px;
+}
+
+.leitura {
+    
 }
 
 footer{
