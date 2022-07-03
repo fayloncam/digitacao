@@ -18,6 +18,9 @@
 
 body {
     background-color: var(--cor4);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
 }
 
 header {
@@ -31,12 +34,12 @@ header h1 {
 }
 
 main{
-    width: 960px;
+    max-width: 960px;
     padding: 10px;
     margin: auto;
 }
 
-main div {
+main .leitura {
     background-color: white;
     max-height: 108px;
     border-radius: 10px;
@@ -48,11 +51,22 @@ main div {
     overflow-y: hidden;
 }
 
-main div span {
+main .temporizador {
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
+}
+
+main .temporizador span {
+ font-weight: 500;
+}
+
+main div.leitura span {
     padding: 3px;
     margin-top: 10px;
-    font-family: Courier, 'Ubuntu Mono', monospace;
-    
+    font-family: Courier, 'Ubuntu Mono', monospace;    
 }
 
 main div span.ativo {
@@ -79,9 +93,6 @@ main input {
     padding: 3px;
 }
 
-.leitura {
-    
-}
 
 footer{
     background-color: var(--cor3);

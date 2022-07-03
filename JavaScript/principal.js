@@ -13,6 +13,11 @@ let txtLid
 let carDig
 let carLid
 let indice = 0
+const tagTempo = document.querySelector('.timer')
+let timer
+let temMax = 60
+let temRes = temMax
+let estDig = false
 
 document.addEventListener("keydown", () => cxTagDig.focus())
 
@@ -50,6 +55,9 @@ cxTagDig.addEventListener('keyup',
                 }
                 indice++ 
             }
+        
+        estDig == false ? timer = setInterval(iniTimer, 1000) : null
+        estDig = true
     }
 )
 
@@ -75,10 +83,21 @@ function atualizar() {
     }
     cxTagDig.value = ''
     indice = 0
+    estDig = false
+    temRes = 60
+    clearInterval(timer)
+    tagTempo.innerText = temRes
     colocaPalavra()
 }
 
-
+function iniTimer(){
+    if (temRes > 0){
+        temRes--
+        tagTempo.innerText = temRes
+    } else {
+        clearInterval(timer)
+    }
+}
 
 
  
