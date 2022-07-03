@@ -17,14 +17,21 @@
                           
             </div>
             
-            <div class="temporizador">
-                <p>Tempo restante:&nbsp;</p><span class="timer">60</span><p>&nbsp;segundos</p>
+            <div class="interacao">
+                <div class="temporizador">
+                    <p>Tempo restante:&nbsp;</p><span class="timer">60</span><p>&nbsp;segundos</p>
+                </div>
+                <input type='text' class='digitacao' id='digitacao'>
+                <input type="button" value="Atualizar" id="atualizar" onclick="atualizar()">
             </div>
-            <input type='text' class='digitacao' id='digitacao'>
-            <input type="button" value="Atualizar" id="atualizar" onclick="atualizar()">
+            <div class="resultado">
+                <p>Palavras corretas:&nbsp;<span class="corretas"></span></p>
+                <p>Palavras erradas:&nbsp;<span class="erradas"></span></p>
+                <p>Acuracidade:&nbsp;<span class="acuracidade"></span></p>
+            </div>
         </main>
         <footer>
-            <h2>fayloncam</h2><p><a href="https://github.com/fayloncam/projeto-site-digitacao">fork me</a> é open source!</p>
+            <h2>fayloncam</h2><p><a href="https://github.com/fayloncam/projeto-site-digitacao" target="_blank">fork me</a> é open source!</p>
         </footer>
     </div>
     

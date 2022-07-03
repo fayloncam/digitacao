@@ -51,7 +51,13 @@ main .leitura {
     overflow-y: hidden;
 }
 
-main .temporizador {
+main .interacao {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main .interacao .temporizador {
     font-size: 1.2em;
     display: flex;
     align-items: center;
@@ -98,4 +104,9 @@ footer{
     background-color: var(--cor3);
     color: var(--cor4);
     text-align: center;
+}
+
+footer p a {
+    text-decoration: none;
+    color: var(--cor1);
 }
