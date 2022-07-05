@@ -1,6 +1,6 @@
 const portugues = ['coisa','casa','tempo','dia','ano','vez','homem','senhor','moça', 'bom', 'grande','melhor','pior','certo','último','próprio','ser','ir','estar','ter','haver','fazer','dar','ficar','poder','ver','não','mais','muito','já','quando','mesmo','depois','ainda','um','dois','primeiro','cem','mil','a','o','um','uma','de','em','para','por','com','até','e','mas','ou','também','se','assim','como','porque','que','eu','você','ele','este','esse','isso','sua','teste','digitar','João','Pedro','Marcos','Lucas','Mateus']
 let tamanho = portugues.length
-let randomiza = (tam) => Math.round (Math.random() * tam)
+let randomiza = (tam) => Math.floor (Math.random() * tam)
 const selecionaLeitura = document.querySelector('.leitura') // Cria variavel que recebe o elemento pai
 let numTagInicio = 0
 let cxPalLid
