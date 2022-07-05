@@ -99,6 +99,10 @@ main input {
     padding: 3px;
 }
 
+main .resultado {
+    display: none
+}
+
 
 footer{
     background-color: var(--cor3);
