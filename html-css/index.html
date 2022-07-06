@@ -7,7 +7,7 @@
     <title>Teste de digitação</title>
     <link rel="stylesheet" href="estilo/style.css">
 </head>
-<body onload="colocaPalavra()">
+<body>
     <div>
         <header>
             <h1>Treine sua digitação</h1>
@@ -22,7 +22,7 @@
                     <p>Tempo restante:&nbsp;</p><span class="timer">60</span><p>&nbsp;segundos</p>
                 </div>
                 <input type='text' class='digitacao' id='digitacao'>
-                <input type="button" value="Atualizar" id="atualizar" onclick="atualizar()">
+                <input type="button" value="Recomeçar" id="recomecar" onclick="atualizaLeitor()">
             </div>
             <div class="resultado">
                 <p>Palavras corretas:&nbsp;<span class="corretas"></span></p>

@@ -1,18 +1,20 @@
 const portugues = ['coisa','casa','tempo','dia','ano','vez','homem','senhor','moça', 'bom', 'grande','melhor','pior','certo','último','próprio','ser','ir','estar','ter','haver','fazer','dar','ficar','poder','ver','não','mais','muito','já','quando','mesmo','depois','ainda','um','dois','primeiro','cem','mil','a','o','um','uma','de','em','para','por','com','até','e','mas','ou','também','se','assim','como','porque','que','eu','você','ele','este','esse','isso','sua','teste','digitar','João','Pedro','Marcos','Lucas','Mateus']
 let tamanho = portugues.length
-let randomiza = (tam) => Math.round (Math.random() * tam)
+let randomiza = (tam) => Math.floor(Math.random() * tam)
 const selecionaLeitura = document.querySelector('.leitura') // Cria variavel que recebe o elemento pai
 let numTagInicio = 0
 let cxPalLid
 let palDig = ''
 let proTagNum =''
 let bsCounter = Number('0')
+
 let cxTagDig = document.getElementById('digitacao')
 let txtDig
 let txtLid
 let carDig
 let carLid
 let indice = 0
+
 const tagTempo = document.querySelector('.timer')
 let timer
 let temMax = 11
@@ -22,59 +24,60 @@ let estDig = false
 const tagPalavrasCorretas = document.querySelector('.corretas')
 const tagPalavrasIncorretas = document.querySelector('.incorretas')
 const tagAcuracidade = document.querySelector('.acuracidade')
-let numPalavrasCorretas = Number()
-let numPalavrasIncorretas = Number()
-let acuracidade = Number.parseFloat()
+let numPalavrasCorretas
+let numPalavrasIncorretas
+let acuracidade
+
+document.onload = colocaPalavra()
 
 document.addEventListener("keydown", () => cxTagDig.focus())
 
-cxTagDig.addEventListener('keyup',
+cxTagDig.addEventListener('keyup', verificaTecla)
    
     //--------------- chama funçaõ anônima (um dia será identificada)
-    function (evento) {
-        //------------------ Verifica o envento "espaço pressionado", compara as palavras (digitada e lida) e define a classe (correta, incorreta)
-        if (evento.code === 'Space') {
-            if(cxPalLid != null) {
-                palDig = cxTagDig.value
-                palDig == `${cxPalLid.innerText} ` ? cxPalLid.classList.add('correto') : cxPalLid.classList.add('incorreto')
-                cxPalLid.classList.remove('ativo')
-                //----------------- Define novos valores e atributos para variaveis e objetos
-                proTagNum ++
-                proTag = `palLer${proTagNum}`
-                cxPalLid = document.getElementById(proTag)
-                cxPalLid.scrollIntoView({behavior: "smooth", block:"center"})
-                //palDig = ''// Atribuição de valor inutil (até o momento)
-                cxTagDig.value = '' 
-                indice = 0
-                //--------------------- Atribui classe 'ativo' para a próxima palavra caso exista
-                if (cxPalLid != null) {
-                cxPalLid.classList.add('ativo')}
-                //------------------
-            } else {
-                window.alert('Acabaram as palavras')
-                cxTagDig.value = ''    
-              }
-        } else
-        
-        if (evento.code === 'Backspace') {
-            bsCounter ++
-            indice--
-            cxPalLid.classList.remove('incorreto')
-            cxPalLid.classList.add('ativo')
-        } else if (evento.key != 'Dead' && evento.key != 'Shift') { 
-                txtDig = document.querySelector('.digitacao')
-                carDig = txtDig.value.split('')[indice]
-                carLid = cxPalLid.innerText.split('')[indice]
-                if (carDig != carLid) {
-                    cxPalLid.classList.add('incorreto')
-                }
-                indice++ 
+function verificaTecla (evento) {
+    //------------------ Verifica o envento "espaço pressionado", compara as palavras (digitada e lida) e define a classe (correta, incorreta)
+    if (evento.code === 'Space') {
+        if(cxPalLid != null) {
+            palDig = cxTagDig.value
+            palDig == `${cxPalLid.innerText} ` ? cxPalLid.classList.add('correto') : cxPalLid.classList.add('incorreto')
+            cxPalLid.classList.remove('ativo')
+            //----------------- Define novos valores e atributos para variaveis e objetos
+            proTagNum ++
+            proTag = `palLer${proTagNum}`
+            cxPalLid = document.getElementById(proTag)
+            cxPalLid.scrollIntoView({behavior: "smooth", block:"center"})
+            //palDig = ''// Atribuição de valor inutil (até o momento)
+            cxTagDig.value = '' 
+            indice = 0
+            //--------------------- Atribui classe 'ativo' para a próxima palavra caso exista
+            if (cxPalLid != null) {
+            cxPalLid.classList.add('ativo')}
+            //------------------
+        } else {
+            window.alert('Acabaram as palavras')
+            cxTagDig.value = ''    
             }
-        
-        estDig == false ? timer = setInterval(iniTimer, 1000) : null
-        estDig = true
-    }
-)
+    } else
+    
+    if (evento.code === 'Backspace') {
+        bsCounter ++
+        indice--
+        cxPalLid.classList.remove('incorreto')
+        cxPalLid.classList.add('ativo')
+    } else if (evento.key != 'Dead' && evento.key != 'Shift') { 
+            txtDig = document.querySelector('.digitacao')
+            carDig = txtDig.value.split('')[indice]
+            carLid = cxPalLid.innerText.split('')[indice]
+            if (carDig != carLid) {
+                cxPalLid.classList.add('incorreto')
+            }
+            indice++ 
+        }
+    
+    estDig == false ? timer = setInterval(iniTimer, 1000) : null
+    estDig = true
+}
 
 function colocaPalavra(){
     while (numTagInicio <= 200) {
@@ -94,7 +97,7 @@ function colocaPalavra(){
     //------------
 }
 
-function atualizar() {
+function atualizaLeitor() {
     
     //--------- Limpa a caixa de leitura
     numTagInicio = Number('0')
@@ -117,19 +120,23 @@ function iniTimer(){
         temRes--
         tagTempo.innerText = temRes
     } else {
-        mostraResultados()
+        computaValores()
         clearInterval(timer)
     }
 }
 
-function mostraResultados() {
+function computaValores() {
     numPalavrasCorretas = document.getElementsByClassName('correto').length
     numPalavrasIncorretas = document.getElementsByClassName('incorreto').length
-    acuracidade = Number.parseFloat(Math.round((numPalavrasCorretas*100)/(numPalavrasCorretas+numPalavrasIncorretas), -2))
+    acuracidade = (numPalavrasCorretas*100)/(numPalavrasCorretas+numPalavrasIncorretas)
+    mostraResultados()
+}
+
+function mostraResultados() {
+    
     tagPalavrasCorretas.innerText = numPalavrasCorretas
     tagPalavrasIncorretas.innerText = numPalavrasIncorretas
-    tagAcuracidade.innerText = `${acuracidade} %`
+    tagAcuracidade.innerText = `${acuracidade.toFixed(2)} %`
     
-
 }
  
