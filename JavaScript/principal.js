@@ -7,6 +7,7 @@ let cxPalLid
 let palDig = ''
 let proTagNum =''
 let bsCounter = Number('0')
+let qtdCaracteresDigitados = Number('0')
 
 let cxTagDig = document.getElementById('digitacao')
 let txtDig
@@ -17,12 +18,13 @@ let indice = 0
 
 const tagTempo = document.querySelector('.timer')
 let timer
-let temMax = 11
+let temMax = 60
 let temRes = temMax
 let estDig = false
 
-const tagPalavrasCorretas = document.querySelector('.corretas')
-const tagPalavrasIncorretas = document.querySelector('.incorretas')
+const tagResultados = document.querySelector('.resultado')
+const tagPPM = document.querySelector('.corretas')
+const tagCPM = document.querySelector('.incorretas')
 const tagAcuracidade = document.querySelector('.acuracidade')
 let numPalavrasCorretas
 let numPalavrasIncorretas
@@ -47,7 +49,6 @@ function verificaTecla (evento) {
             proTag = `palLer${proTagNum}`
             cxPalLid = document.getElementById(proTag)
             cxPalLid.scrollIntoView({behavior: "smooth", block:"center"})
-            //palDig = ''// Atribuição de valor inutil (até o momento)
             cxTagDig.value = '' 
             indice = 0
             //--------------------- Atribui classe 'ativo' para a próxima palavra caso exista
@@ -61,7 +62,7 @@ function verificaTecla (evento) {
     } else
     
     if (evento.code === 'Backspace') {
-        bsCounter ++
+        qtdCaracteresDigitados --
         indice--
         cxPalLid.classList.remove('incorreto')
         cxPalLid.classList.add('ativo')
@@ -72,7 +73,8 @@ function verificaTecla (evento) {
             if (carDig != carLid) {
                 cxPalLid.classList.add('incorreto')
             }
-            indice++ 
+            indice++
+            qtdCaracteresDigitados ++
         }
     
     estDig == false ? timer = setInterval(iniTimer, 1000) : null
@@ -99,6 +101,8 @@ function colocaPalavra(){
 
 function atualizaLeitor() {
     
+    tagResultados.style.display = 'none'
+
     //--------- Limpa a caixa de leitura
     numTagInicio = Number('0')
     while (selecionaLeitura.firstChild){
@@ -109,7 +113,7 @@ function atualizaLeitor() {
     indice = 0
     estDig = false
     temRes = 60
-    //--------------- Limpa o intervalo e chama o método para colocar as palavras novamente
+    //--------------- Limpa o intervalo de tempo e chama o método para colocar as palavras novamente
     clearInterval(timer)
     tagTempo.innerText = temRes
     colocaPalavra()
@@ -134,8 +138,9 @@ function computaValores() {
 
 function mostraResultados() {
     
-    tagPalavrasCorretas.innerText = numPalavrasCorretas
-    tagPalavrasIncorretas.innerText = numPalavrasIncorretas
+    tagResultados.style.display = 'flex'
+    tagPPM.innerText = numPalavrasCorretas+numPalavrasIncorretas
+    tagCPM.innerText = qtdCaracteresDigitados
     tagAcuracidade.innerText = `${acuracidade.toFixed(2)} %`
     
 }
