@@ -20,6 +20,9 @@ body {
     background-color: var(--cor4);
     min-height: 100vh;
     justify-content: center;
+    align-items: center;
+    display: grid;
+    grid-template-rows: 0.3fr 1.5fr 0.2fr
 }
 
 header {
@@ -45,7 +48,6 @@ main .leitura {
     font-size: 2em;
     padding: 10px 5px;
     margin: auto;
-    display: block;
     text-align: justify;
     overflow-y: hidden;
 }
@@ -56,7 +58,7 @@ main .interacao {
     justify-content: center;
 }
 
-@media only screen and (max-width:550px) {
+@media only screen and (max-width:700px) {
     main .interacao{
         display:block
     }

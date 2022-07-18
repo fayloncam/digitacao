@@ -18,7 +18,8 @@ let indice = 0
 
 const tagTempo = document.querySelector('.timer')
 let timer
-let maxTime = 60
+let maxTimeDefault = 30
+let maxTime = maxTimeDefault
 let remainingTime = maxTime
 let isTyping = false
 
@@ -111,7 +112,7 @@ function atualizaLeitor() {
     cxTagDig.value = ''
     indice = 0
     isTyping = false
-    remainingTime = 60
+    remainingTime = maxTimeDefault
     //--------------- Limpa o intervalo de tempo e chama o método para colocar as palavras novamente
     clearInterval(timer)
     tagTempo.innerText = remainingTime
@@ -148,3 +149,4 @@ function mostraResultados() {
 function getTimeValue (seconds) {
 maxTime = seconds
 }
+
