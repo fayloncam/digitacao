@@ -41,6 +41,16 @@ main{
     margin: auto;
 }
 
+main .sec-button {
+    padding: 5px;
+    margin-top: 10px;
+}
+
+main .sec-button:hover {
+    color: var(--cor1);
+    cursor:pointer;
+}
+
 main .leitura {
     background-color: white;
     max-height: 108px;
