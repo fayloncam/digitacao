@@ -34,18 +34,19 @@ header h1 {
 }
 
 main{
-    max-width: 800px;
+    max-width: 960px;
     padding: 10px;
     margin: auto;
 }
 
 main .leitura {
     background-color: white;
-    max-height: 90px;
+    max-height: 108px;
     border-radius: 10px;
-    font-size: 1.6em;
-    padding: 10px;
+    font-size: 2em;
+    padding: 10px 5px;
     margin: auto;
+    display: block;
     text-align: justify;
     overflow-y: hidden;
 }
@@ -53,8 +54,7 @@ main .leitura {
 main .interacao {
     display:flex;
     align-items: center;
-    justify-content: space-between;
-    margin-top: 15px;
+    justify-content: center;
 }
 
 main .interacao .temporizador {
@@ -71,6 +71,8 @@ main .temporizador span {
 
 main div.resultado {
     display:none;
+    font-size: 1.5em;
+    /*display: flex;*/
     align-items: center;
     justify-content: space-between;
     padding: 10px;
@@ -78,11 +80,12 @@ main div.resultado {
 
 main div.resultado p {
     border-left: 2px solid var(--cor3);
-    padding: 5px;
+    padding-left: 5px;
 }
 
 main div.leitura span {
-    padding: 0px 3px;
+    padding: 3px;
+    margin-top: 10px;
     font-family: Courier, 'Ubuntu Mono', monospace;    
 }
 
@@ -102,10 +105,18 @@ main div span.incorreto {
 }
 
 main input {
+    display: block;
     border-radius: 10px;
-    font-size: 1.3em;
+    font-size: 1.5em;
+    margin: auto;
+    margin-top: 15px;
     padding: 3px;
 }
+
+main .resultado {
+    display: none
+}
+
 
 footer{
     background-color: var(--cor3);

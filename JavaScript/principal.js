@@ -2,10 +2,10 @@ const portugues = ['coisa','casa','tempo','dia','ano','vez','homem','senhor','mo
 let tamanho = portugues.length
 let randomiza = (tam) => Math.floor(Math.random() * tam)
 const selecionaLeitura = document.querySelector('.leitura') // Cria variavel que recebe o elemento pai
-let numTagInicio = 0
-let cxPalLid
-let palDig = ''
-let proTagNum =''
+let tagNumInit = 0
+let readWordBox
+let inputedWord = ''
+let nextTagNum =''
 let bsCounter = Number('0')
 let qtdCaracteresDigitados = Number('0')
 
@@ -18,9 +18,9 @@ let indice = 0
 
 const tagTempo = document.querySelector('.timer')
 let timer
-let temMax = 60
-let temRes = temMax
-let estDig = false
+let maxTime = 60
+let remainingTime = maxTime
+let isTyping = false
 
 const tagResultados = document.querySelector('.resultado')
 const tagPPM = document.querySelector('.corretas')
@@ -35,25 +35,24 @@ document.onload = colocaPalavra()
 document.addEventListener("keydown", () => cxTagDig.focus())
 
 cxTagDig.addEventListener('keyup', verificaTecla)
-   
-    //--------------- chama funçaõ anônima (um dia será identificada)
+
 function verificaTecla (evento) {
     //------------------ Verifica o envento "espaço pressionado", compara as palavras (digitada e lida) e define a classe (correta, incorreta)
     if (evento.code === 'Space') {
-        if(cxPalLid != null) {
-            palDig = cxTagDig.value
-            palDig == `${cxPalLid.innerText} ` ? cxPalLid.classList.add('correto') : cxPalLid.classList.add('incorreto')
-            cxPalLid.classList.remove('ativo')
+        if(readWordBox != null) {
+            inputedWord = cxTagDig.value
+            inputedWord == `${readWordBox.innerText} ` ? readWordBox.classList.add('correto') : readWordBox.classList.add('incorreto')
+            readWordBox.classList.remove('ativo')
             //----------------- Define novos valores e atributos para variaveis e objetos
-            proTagNum ++
-            proTag = `palLer${proTagNum}`
-            cxPalLid = document.getElementById(proTag)
-            cxPalLid.scrollIntoView({behavior: "smooth", block:"center"})
+            nextTagNum ++
+            proTag = `palLer${nextTagNum}`
+            readWordBox = document.getElementById(proTag)
+            readWordBox.scrollIntoView({behavior: "smooth", block:"center"})
             cxTagDig.value = '' 
             indice = 0
             //--------------------- Atribui classe 'ativo' para a próxima palavra caso exista
-            if (cxPalLid != null) {
-            cxPalLid.classList.add('ativo')}
+            if (readWordBox != null) {
+            readWordBox.classList.add('ativo')}
             //------------------
         } else {
             window.alert('Acabaram as palavras')
@@ -64,38 +63,38 @@ function verificaTecla (evento) {
     if (evento.code === 'Backspace') {
         qtdCaracteresDigitados --
         indice--
-        cxPalLid.classList.remove('incorreto')
-        cxPalLid.classList.add('ativo')
+        readWordBox.classList.remove('incorreto')
+        readWordBox.classList.add('ativo')
     } else if (evento.key != 'Dead' && evento.key != 'Shift') { 
             txtDig = document.querySelector('.digitacao')
             carDig = txtDig.value.split('')[indice]
-            carLid = cxPalLid.innerText.split('')[indice]
+            carLid = readWordBox.innerText.split('')[indice]
             if (carDig != carLid) {
-                cxPalLid.classList.add('incorreto')
+                readWordBox.classList.add('incorreto')
             }
             indice++
             qtdCaracteresDigitados ++
         }
     
-    estDig == false ? timer = setInterval(iniTimer, 1000) : null
-    estDig = true
+    isTyping == false ? timer = setInterval(iniTimer, 1000) : null
+    isTyping = true
 }
 
 function colocaPalavra(){
-    while (numTagInicio <= 200) {
+    while (tagNumInit <= 200) {
         let colocaSpan = document.createElement('span')// Cria variavel que recebe o tipo de tag a ser criada, na verdade cria o elemento
         colocaSpan.innerText = `${portugues[randomiza(tamanho)]}` // Configura o texto (aqui a palavra) da tag que será criada
-        colocaSpan.id = `palLer${numTagInicio}` // Configura o id da tag que será criada
+        colocaSpan.id = `palLer${tagNumInit}` // Configura o id da tag que será criada
         selecionaLeitura.insertAdjacentElement('beforeend',colocaSpan) // Cria de fato a tag levando em conta o pai (definido na variável) e adiciona-a
         selecionaLeitura.insertAdjacentText('beforeend',' ')
-        numTagInicio++
+        tagNumInit++
     }
     
     //----------
-    cxPalLid = document.getElementById('palLer0')
-    cxPalLid.classList.add('ativo')
-    cxPalLid.scrollIntoView(false)
-    proTagNum = ''
+    readWordBox = document.getElementById('palLer0')
+    readWordBox.classList.add('ativo')
+    readWordBox.scrollIntoView(false)
+    nextTagNum = ''
     //------------
 }
 
@@ -104,25 +103,25 @@ function atualizaLeitor() {
     tagResultados.style.display = 'none'
 
     //--------- Limpa a caixa de leitura
-    numTagInicio = Number('0')
+    tagNumInit = Number('0')
     while (selecionaLeitura.firstChild){
         selecionaLeitura.removeChild(selecionaLeitura.firstChild)
     }
     //------ Define e/ ou redefine valores nas variáveis
     cxTagDig.value = ''
     indice = 0
-    estDig = false
-    temRes = 60
+    isTyping = false
+    remainingTime = 60
     //--------------- Limpa o intervalo de tempo e chama o método para colocar as palavras novamente
     clearInterval(timer)
-    tagTempo.innerText = temRes
+    tagTempo.innerText = remainingTime
     colocaPalavra()
 }
 
 function iniTimer(){
-    if (temRes > 0){
-        temRes--
-        tagTempo.innerText = temRes
+    if (remainingTime > 0){
+        remainingTime--
+        tagTempo.innerText = remainingTime
     } else {
         computaValores()
         clearInterval(timer)
@@ -130,8 +129,9 @@ function iniTimer(){
 }
 
 function computaValores() {
-    numPalavrasCorretas = document.getElementsByClassName('correto').length
-    numPalavrasIncorretas = document.getElementsByClassName('incorreto').length
+    let multiple = 60/maxTime
+    numPalavrasCorretas = document.getElementsByClassName('correto').length * multiple
+    numPalavrasIncorretas = document.getElementsByClassName('incorreto').length * multiple
     acuracidade = (numPalavrasCorretas*100)/(numPalavrasCorretas+numPalavrasIncorretas)
     mostraResultados()
 }
@@ -145,3 +145,6 @@ function mostraResultados() {
     
 }
  
+function getTimeValue (seconds) {
+maxTime = seconds
+}
