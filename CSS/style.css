@@ -7,7 +7,7 @@
     --cor3: #0b132b;
     --cor4: #f30b47;
 
-    --fonte-padrao: 'Ubuntu', Arial, sans-serif;
+    --fonte-padrao: 'Ubuntu Mono', sans-serif;
 }
 
 * {
@@ -42,12 +42,13 @@ main{
 }
 
 main .sec-button {
+    color: var(--cor3);
     padding: 5px;
     margin-top: 10px;
 }
 
 main .sec-button:hover {
-    color: var(--cor1);
+    color: var(--cor2);
     cursor:pointer;
 }
 

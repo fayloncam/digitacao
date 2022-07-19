@@ -95,6 +95,7 @@ function colocaPalavra(){
     readWordBox.classList.add('ativo')
     readWordBox.scrollIntoView(false)
     nextTagNum = ''
+    tagTempo.innerText = remainingTime
     //------------
 }
 
@@ -147,8 +148,6 @@ function mostraResultados() {
 
 
 let secondsSetValue = document.querySelectorAll(".sec-button")
-
-// secondsSetValue.addEventListener('click', getTimeValue())
 
 function getTimeValue (element) {
     maxTime = element.getAttribute("value")
