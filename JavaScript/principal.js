@@ -42,9 +42,16 @@ document.addEventListener("keydown", () => cxTagDig.focus())
 
 cxTagDig.addEventListener('keyup', verificaTecla)
 
-function verificaTecla (evento) {
+function verificaTecla (event) {
+
+    const pressed = {
+        name: event.code,
+        sign: event.key
+    }
+    
+    console.log(pressed)
     //------------------ Verifica o envento "espaço pressionado", compara as palavras (digitada e lida) e define a classe (correta, incorreta)
-    if (evento.code === 'Space') {
+    if (pressed.name == 'Space') {
         if(readWordBox != null) {
             inputedWord = cxTagDig.value
             inputedWord == `${readWordBox.innerText} ` ? readWordBox.classList.add('correto') : readWordBox.classList.add('incorreto')
@@ -64,12 +71,12 @@ function verificaTecla (evento) {
             window.alert('Acabaram as palavras')
             cxTagDig.value = ''    
             }
-    } else if (evento.code === 'Backspace') {
+    } else if (pressed.name == 'Backspace') {
         qtdCaracteresDigitados--
         indice--
         readWordBox.classList.remove('incorreto')
         readWordBox.classList.add('ativo')
-        } else if (evento.key != 'Dead' && evento.key != 'Shift') { 
+        } else if (pressed.sign != 'Dead' && pressed.sign != 'Shift') { 
             txtDig = document.querySelector('.digitacao')
             carDig = txtDig.value.split('')[indice]
             carLid = readWordBox.innerText.split('')[indice]
