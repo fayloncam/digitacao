@@ -13,18 +13,22 @@
         <h1>Treine sua digitação</h1>        
     </header>
     <main class="principal">
-        <div class='leitura' id='leitura'>
-                        
+        <div class="time">
+            <span class="sec-button" value='15'>15 segundos</span>
+            <span class="sec-button" value='30'>30 segundos</span>
+            <span class="sec-button" value='60'>1 minuto</span>
         </div>
-        <div class="time"><span class="sec-button" value='30'>30 segundos</span><span class="sec-button" value='60'>1 minuto</span></div></div>                
+        <div class='leitura' id='leitura'>
+            
+        </div>               
         <div class="interacao">
             <div class="temporizador">
                 <p>Tempo restante:&nbsp;</p><span class="timer"></span><p>&nbsp;segundos</p>
             </div>
-            <input type='text' class='digitacao' id='digitacao'>
-            <input type="button" value="Recomeçar" id="recomecar" onclick="atualizaLeitor()">
+            <input type='text' class='digitacao' id='digitacao'>    
         </div>
         <div class="resultado">
+            <input type="button" value="Recomeçar" id="recomecar" onclick="reloadReader()">
             <p>Palavras por minuto - PPM:&nbsp;<span class="corretas"></span></p>
             <p>Caracteres por minuto - CPM:&nbsp;<span class="incorretas"></span></p>
             <p>Acuracidade:&nbsp;<span class="acuracidade"></span></p>

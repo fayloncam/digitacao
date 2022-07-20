@@ -30,6 +30,8 @@ let numPalavrasCorretas
 let numPalavrasIncorretas
 let acuracidade
 
+const tagInteraction = document.querySelector('.interacao')
+
 document.onload = colocaPalavra()
 
 document.addEventListener("keydown", () => cxTagDig.focus())
@@ -76,7 +78,7 @@ function verificaTecla (evento) {
             qtdCaracteresDigitados ++
         }
     
-    isTyping == false ? timer = setInterval(iniTimer, 1000) : null
+    isTyping == false ? timer = setInterval(iniTimer, 999) : null
     isTyping = true
 }
 
@@ -99,7 +101,7 @@ function colocaPalavra(){
     //------------
 }
 
-function atualizaLeitor() {
+function reloadReader() {
     
     tagResultados.style.display = 'none'
 
@@ -125,7 +127,9 @@ function iniTimer(){
         tagTempo.innerText = remainingTime
     } else {
         computaValores()
+        mostraResultados()
         clearInterval(timer)
+        
     }
 }
 
@@ -134,7 +138,7 @@ function computaValores() {
     numPalavrasCorretas = document.getElementsByClassName('correto').length * multiple
     numPalavrasIncorretas = document.getElementsByClassName('incorreto').length * multiple
     acuracidade = (numPalavrasCorretas*100)/(numPalavrasCorretas+numPalavrasIncorretas)
-    mostraResultados()
+    
 }
 
 function mostraResultados() {
@@ -151,7 +155,10 @@ let secondsSetValue = document.querySelectorAll(".sec-button")
 
 function getTimeValue (element) {
     maxTime = element.getAttribute("value")
-    tagTempo.innerText = maxTime
+    if (isTyping == false) {
+        remainingTime = maxTime
+        tagTempo.innerText = maxTime
+    }
 }
 
 
