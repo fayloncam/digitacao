@@ -1,0 +1,5 @@
+const portugues = ['coisa','casa','tempo','dia','ano','vez','homem','senhor','moça', 'bom', 'grande','melhor','pior','certo','último','próprio','ser','ir','estar','ter','haver','fazer','dar','ficar','poder','ver','não','mais','muito','já','quando','mesmo','depois','ainda','um','dois','primeiro','cem','mil','a','o','um','uma','de','em','para','por','com','até','e','mas','ou','também','se','assim','como','porque','que','eu','você','ele','este','esse','isso','sua','teste','digitar','João','Pedro','Marcos','Lucas','Mateus']
+
+const english = ['thing','house','time','day','year','state','man','sir','girl', 'good', 'big','best','worst','right','last','own','be','go','belive','have','heaven','do','give','stay','may', 'see','not','more','much','already','when','even','after','yet','one','two','first','hundred','thousand','a','o','one','one','from','in','to','by','with','until','and', 'but','or','also','if','so','as','because','that','I','you','he','this','your','test','type','John','Peter','Mark','Lucas','Mattew']
+
+export {portugues};

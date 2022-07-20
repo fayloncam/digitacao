@@ -1,17 +1,21 @@
 const portugues = ['coisa','casa','tempo','dia','ano','vez','homem','senhor','moça', 'bom', 'grande','melhor','pior','certo','último','próprio','ser','ir','estar','ter','haver','fazer','dar','ficar','poder','ver','não','mais','muito','já','quando','mesmo','depois','ainda','um','dois','primeiro','cem','mil','a','o','um','uma','de','em','para','por','com','até','e','mas','ou','também','se','assim','como','porque','que','eu','você','ele','este','esse','isso','sua','teste','digitar','João','Pedro','Marcos','Lucas','Mateus']
+
+// import {portugues} from "./language"
+
 let tamanho = portugues.length
 let randomiza = (tam) => Math.floor(Math.random() * tam)
+
 const selecionaLeitura = document.querySelector('.leitura') // Cria variavel que recebe o elemento pai
 let tagNumInit = 0
 let readWordBox
 let inputedWord = ''
 let nextTagNum =''
-let bsCounter = Number('0')
+// let bsCounter = Number('0')
 let qtdCaracteresDigitados = Number('0')
 
 let cxTagDig = document.getElementById('digitacao')
 let txtDig
-let txtLid
+// let txtLid
 let carDig
 let carLid
 let indice = 0
@@ -60,14 +64,12 @@ function verificaTecla (evento) {
             window.alert('Acabaram as palavras')
             cxTagDig.value = ''    
             }
-    } else
-    
-    if (evento.code === 'Backspace') {
-        qtdCaracteresDigitados --
+    } else if (evento.code === 'Backspace') {
+        qtdCaracteresDigitados--
         indice--
         readWordBox.classList.remove('incorreto')
         readWordBox.classList.add('ativo')
-    } else if (evento.key != 'Dead' && evento.key != 'Shift') { 
+        } else if (evento.key != 'Dead' && evento.key != 'Shift') { 
             txtDig = document.querySelector('.digitacao')
             carDig = txtDig.value.split('')[indice]
             carLid = readWordBox.innerText.split('')[indice]
@@ -76,7 +78,7 @@ function verificaTecla (evento) {
             }
             indice++
             qtdCaracteresDigitados ++
-        }
+            }
     
     isTyping == false ? timer = setInterval(iniTimer, 999) : null
     isTyping = true
