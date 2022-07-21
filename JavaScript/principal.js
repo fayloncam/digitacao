@@ -49,7 +49,6 @@ function verificaTecla (event) {
         sign: event.key
     }
     
-    console.log(pressed)
     //------------------ Verifica o envento "espaço pressionado", compara as palavras (digitada e lida) e define a classe (correta, incorreta)
     if (pressed.name == 'Space') {
         if(readWordBox != null) {
@@ -113,6 +112,7 @@ function colocaPalavra(){
 function reloadReader() {
     
     tagResultados.style.display = 'none'
+    tagInteraction.style.display = 'block'
 
     //--------- Limpa a caixa de leitura
     tagNumInit = Number('0')
@@ -152,7 +152,8 @@ function computaValores() {
 
 function mostraResultados() {
     
-    tagResultados.style.display = 'flex'
+    tagInteraction.style.display = 'none'
+    window.screen.width > 700 ? tagResultados.style.display = 'flex': tagResultados.style.display = 'block'
     tagPPM.innerText = numPalavrasCorretas+numPalavrasIncorretas
     tagCPM.innerText = qtdCaracteresDigitados
     tagAcuracidade.innerText = `${acuracidade.toFixed(2)} %`

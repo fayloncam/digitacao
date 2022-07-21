@@ -41,23 +41,37 @@ main{
     margin: auto;
 }
 
+main div.buttons {
+    display: grid;
+    grid-template-columns: 1.5fr 0.5fr;
+    align-items: center;
+    margin: 10px auto;
+}
+
 main .sec-button {
     color: var(--cor3);
-    padding: 5px;
-    margin-top: 10px;
+    padding: 3px;
+    font-size: 1em;
 }
 
 main .sec-button:hover {
-    color: var(--cor2);
+    color: var(--cor1);
     cursor:pointer;
+}
+
+main button.reloadReaderBtn {
+    padding: 3px;
+    color: var(--cor1);
+    background-color: #0b132b;
+    font-size: 1em;
 }
 
 main .leitura {
     background-color: #ffffff85;
-    max-height: 108px;
-    border-radius: 10px;
-    font-size: 2em;
-    padding: 10px 5px;
+    max-height: 139px;
+    border-radius: 8px;
+    font-size: 1.62em;
+    padding: 13px 8px;
     margin: auto;
     text-align: justify;
     overflow-y: hidden;
@@ -71,16 +85,18 @@ main .interacao {
 
 @media only screen and (max-width:700px) {
     main .interacao{
-        display:block
+        display: block;
+        align-items: center;
+        justify-content: center;
     }
 }
 
 main .interacao .temporizador {
-    font-size: 1.2em;
+    font-size: 1.62em;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 3px;
+    padding: 8px;
 }
 
 main .temporizador span {
@@ -89,7 +105,7 @@ main .temporizador span {
 
 main div.resultado {
     display:none;
-    font-size: 1.5em;
+    /* font-size: 1em; */
     /*display: flex;*/
     align-items: center;
     justify-content: space-between;
@@ -114,21 +130,19 @@ main div span.ativo {
 }
 
 main div span.correto {
-    color: green;
+    color: rgb(0, 173, 0);
 }
 
 main div span.incorreto {
     color: red;
-    background: rgb(247, 200, 200);
+    background: rgba(163, 163, 163, 0.603);
     border-radius: 4px;
 }
 
 main input {
-    display: block;
     border-radius: 10px;
-    font-size: 1.5em;
-    margin: auto;
-    margin-top: 15px;
+    font-size: 1.62em;
+    margin: auto 10px auto;
     padding: 3px;
 }
 
