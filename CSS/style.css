@@ -22,13 +22,16 @@ body {
     justify-content: center;
     align-items: center;
     display: grid;
-    grid-template-rows: 0.3fr 1.5fr 0.2fr
+    grid-template-rows: 0.51fr 2.17fr 0.32fr;
 }
 
 header {
     background-color: var(--cor3);
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 20px;
+    height: 100%;
 }
 
 header h1 {
@@ -51,7 +54,7 @@ main div.buttons {
 main .sec-button {
     color: var(--cor3);
     padding: 3px;
-    font-size: 1em;
+    
 }
 
 main .sec-button:hover {
@@ -59,18 +62,22 @@ main .sec-button:hover {
     cursor:pointer;
 }
 
+main .setTime{
+    color: var(--cor1)
+}
+
 main button.reloadReaderBtn {
     padding: 3px;
     color: var(--cor1);
     background-color: #0b132b;
-    font-size: 1em;
+    
 }
 
 main .leitura {
     background-color: #ffffff85;
     max-height: 139px;
     border-radius: 8px;
-    font-size: 1.62em;
+    font-size: 2.6em;
     padding: 13px 8px;
     margin: auto;
     text-align: justify;
@@ -86,13 +93,11 @@ main .interacao {
 @media only screen and (max-width:700px) {
     main .interacao{
         display: block;
-        align-items: center;
-        justify-content: center;
     }
 }
 
 main .interacao .temporizador {
-    font-size: 1.62em;
+    
     display: flex;
     align-items: center;
     justify-content: center;
@@ -105,7 +110,7 @@ main .temporizador span {
 
 main div.resultado {
     display:none;
-    /* font-size: 1em; */
+    /*  */
     /*display: flex;*/
     align-items: center;
     justify-content: space-between;
@@ -141,7 +146,7 @@ main div span.incorreto {
 
 main input {
     border-radius: 10px;
-    font-size: 1.62em;
+    
     margin: auto 10px auto;
     padding: 3px;
 }
@@ -155,6 +160,10 @@ footer{
     background-color: var(--cor3);
     color: var(--cor4);
     text-align: center;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 footer p a {

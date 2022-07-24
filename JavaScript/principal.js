@@ -1,6 +1,6 @@
 const portugues = ['coisa','casa','tempo','dia','ano','vez','homem','senhor','moça', 'bom', 'grande','melhor','pior','certo','último','próprio','ser','ir','estar','ter','haver','fazer','dar','ficar','poder','ver','não','mais','muito','já','quando','mesmo','depois','ainda','um','dois','primeiro','cem','mil','a','o','um','uma','de','em','para','por','com','até','e','mas','ou','também','se','assim','como','porque','que','eu','você','ele','este','esse','isso','sua','teste','digitar','João','Pedro','Marcos','Lucas','Mateus']
 
-// import {portugues} from "./language"
+// import portugues from "./language.js"
 
 let tamanho = portugues.length
 let randomiza = (tam) => Math.floor(Math.random() * tam)
@@ -9,6 +9,7 @@ const selecionaLeitura = document.querySelector('.leitura') // Cria variavel que
 let tagNumInit = 0
 let readWordBox
 let inputedWord = ''
+// let proTag
 let nextTagNum =''
 // let bsCounter = Number('0')
 let qtdCaracteresDigitados = Number('0')
@@ -57,7 +58,7 @@ function verificaTecla (event) {
             readWordBox.classList.remove('ativo')
             //----------------- Define novos valores e atributos para variaveis e objetos
             nextTagNum ++
-            proTag = `palLer${nextTagNum}`
+            let proTag = `palLer${nextTagNum}`
             readWordBox = document.getElementById(proTag)
             readWordBox.scrollIntoView({behavior: "smooth", block:"center"})
             cxTagDig.value = '' 
@@ -109,10 +110,13 @@ function colocaPalavra(){
     //------------
 }
 
+const tagReload = document.querySelector('.reloadReaderBtn')
+tagReload.addEventListener('click', reloadReader)
+
 function reloadReader() {
     
     tagResultados.style.display = 'none'
-    tagInteraction.style.display = 'block'
+    tagInteraction.style.display = 'flex'
 
     //--------- Limpa a caixa de leitura
     tagNumInit = Number('0')
@@ -169,11 +173,16 @@ function getTimeValue (element) {
         remainingTime = maxTime
         tagTempo.innerText = maxTime
     }
+
 }
 
 
 secondsSetValue.forEach(element => {
-
+    
     element.addEventListener('click', () => {
         getTimeValue(element)
-    })})
+        secondsSetValue.forEach(element => {element.classList.remove('setTime')})
+        element.classList.add('setTime')
+        })
+    }
+)
