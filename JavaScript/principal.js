@@ -1,6 +1,6 @@
-const portugues = ['coisa','casa','tempo','dia','ano','vez','homem','senhor','moça', 'bom', 'grande','melhor','pior','certo','último','próprio','ser','ir','estar','ter','haver','fazer','dar','ficar','poder','ver','não','mais','muito','já','quando','mesmo','depois','ainda','um','dois','primeiro','cem','mil','a','o','um','uma','de','em','para','por','com','até','e','mas','ou','também','se','assim','como','porque','que','eu','você','ele','este','esse','isso','sua','teste','digitar','João','Pedro','Marcos','Lucas','Mateus']
+import {portugues} from "./language.js"
+import {english} from "./language.js"
 
-// import portugues from "./language.js"
 
 let tamanho = portugues.length
 let randomiza = (tam) => Math.floor(Math.random() * tam)
@@ -9,14 +9,11 @@ const selecionaLeitura = document.querySelector('.leitura') // Cria variavel que
 let tagNumInit = 0
 let readWordBox
 let inputedWord = ''
-// let proTag
 let nextTagNum =''
-// let bsCounter = Number('0')
 let qtdCaracteresDigitados = Number('0')
 
 let cxTagDig = document.getElementById('digitacao')
 let txtDig
-// let txtLid
 let carDig
 let carLid
 let indice = 0
@@ -37,15 +34,19 @@ let acuracidade
 
 const tagInteraction = document.querySelector('.interacao')
 
+const tagReload = document.querySelector('.reloadReaderBtn')
+
 document.onload = colocaPalavra()
 
 document.addEventListener("keydown", () => cxTagDig.focus())
 
 cxTagDig.addEventListener('keyup', verificaTecla)
 
+tagReload.addEventListener('click', reloadReader)
+
 function verificaTecla (event) {
 
-    const pressed = {
+    let pressed = {
         name: event.code,
         sign: event.key
     }
@@ -109,9 +110,6 @@ function colocaPalavra(){
     tagTempo.innerText = remainingTime
     //------------
 }
-
-const tagReload = document.querySelector('.reloadReaderBtn')
-tagReload.addEventListener('click', reloadReader)
 
 function reloadReader() {
     
