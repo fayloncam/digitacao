@@ -1,8 +1,8 @@
-import {portugues} from "./language.js"
+import {portuguese} from "./language.js"
 import {english} from "./language.js"
 
 
-let tamanho = portugues.length
+let tamanho = portuguese.length
 let randomiza = (tam) => Math.floor(Math.random() * tam)
 
 const selecionaLeitura = document.querySelector('.leitura') // Cria variavel que recebe o elemento pai
@@ -35,6 +35,10 @@ let acuracidade
 const tagInteraction = document.querySelector('.interacao')
 
 const tagReload = document.querySelector('.reloadReaderBtn')
+
+let tagLanguage = document.querySelector('.language')
+
+// let language = tagLanguage.
 
 document.onload = colocaPalavra()
 
@@ -95,7 +99,7 @@ function verificaTecla (event) {
 function colocaPalavra(){
     while (tagNumInit <= 200) {
         let colocaSpan = document.createElement('span')// Cria variavel que recebe o tipo de tag a ser criada, na verdade cria o elemento
-        colocaSpan.innerText = `${portugues[randomiza(tamanho)]}` // Configura o texto (aqui a palavra) da tag que será criada
+        colocaSpan.innerText = `${portuguese[randomiza(tamanho)]}` // Configura o texto (aqui a palavra) da tag que será criada
         colocaSpan.id = `palLer${tagNumInit}` // Configura o id da tag que será criada
         selecionaLeitura.insertAdjacentElement('beforeend',colocaSpan) // Cria de fato a tag levando em conta o pai (definido na variável) e adiciona-a
         selecionaLeitura.insertAdjacentText('beforeend',' ')
